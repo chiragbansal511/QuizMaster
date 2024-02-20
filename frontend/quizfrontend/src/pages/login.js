@@ -2,9 +2,12 @@ import React from "react";
 import { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
+
 
 export default function Login()
 {
+  const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
   
@@ -17,7 +20,8 @@ export default function Login()
       });
       
       Cookies.set("accessToken" , response.data.accessToken);
-
+      navigate("/home");
+      window.location.reload();
     };
 
     return(
@@ -42,7 +46,7 @@ export default function Login()
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit">login</button>
         </form>
       </div>
     );

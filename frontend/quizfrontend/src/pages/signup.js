@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup()
 {   
-    
+  const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [firstname, setFirstname] = useState('');
     const [secondname, setSecondname] = useState('');
@@ -26,14 +27,16 @@ export default function Signup()
         setUsername("");
       }
       else {
-        
+        Cookies.set("accessToken" , response.data.accessToken);
+        navigate('/home')
+      window.location.reload();
       }
     };
 
 
     return (
         <div>
-            <h2>Login</h2>
+            <h2>Signup</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="username">Username:</label>

@@ -3,6 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/home";
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import Addpaper from "../pages/papermaker/addpaper";
+import Seeallpaper from "../pages/papermaker/seeallpaper";
+import Seepaper from "../pages/papermaker/seepaper";
+import Attendpaper from "../pages/paperattempter/attendpaper";
 
 async function authorizationuser() {
     const response = await axios.get('http://localhost:80/auth', {
@@ -29,16 +33,20 @@ export default function PrivateRoute() {
     }, []);
 
     return (
-        <div>
-            {isAuthorized ? (
+      isAuthorized ? (
                 <BrowserRouter>
                     <Routes>
                         <Route path="home" element={<Home />} />
+                        <Route index element={<Home />} />
+                        <Route path="/addpaper" element={<Addpaper />} />
+                        <Route path="/seeallpaper" element={<Seeallpaper />} />
+                        <Route path="/seepaper" element={<Seepaper />} />
+                        <Route path="/attendpaper" element={<Attendpaper />} />
+                        <Route />
                     </Routes>
                 </BrowserRouter>
             ) : (
                 <button><a href="/login">Login Now</a></button>
-            )}
-        </div>
+            )
     );
 }
