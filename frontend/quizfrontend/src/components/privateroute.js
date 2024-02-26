@@ -7,6 +7,7 @@ import Addpaper from "../pages/papermaker/addpaper";
 import Seeallpaper from "../pages/papermaker/seeallpaper";
 import Seepaper from "../pages/papermaker/seepaper";
 import Attendpaper from "../pages/paperattempter/attendpaper";
+import Editpaper from "../pages/papermaker/editpaper";
 
 async function authorizationuser() {
     const response = await axios.get('http://localhost:80/auth', {
@@ -42,6 +43,7 @@ export default function PrivateRoute() {
                         <Route path="/seeallpaper" element={<Seeallpaper />} />
                         <Route path="/seepaper" element={<Seepaper />} />
                         <Route path="/attendpaper" element={<Attendpaper />} />
+                        <Route path="/editpaper" element={<Editpaper />} />
                         <Route />
                     </Routes>
                 </BrowserRouter>
